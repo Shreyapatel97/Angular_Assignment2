@@ -1,0 +1,50 @@
+<div class="container">
+  <h2>Create New Job</h2>
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        formControlName="title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="position">Position</label>
+      <select class="form-control" id="position" formControlName="position">
+        <option value="">Select Position</option>
+        <option value="Full Stack">Full Stack</option>
+        <option value="Front End">Front End</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input
+        type="text"
+        class="form-control"
+        id="location"
+        formControlName="location"
+      />
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary</label>
+      <input
+        type="text"
+        class="form-control"
+        id="salary"
+        formControlName="salary"
+      />
+    </div>
+    <div class="form-group">
+      <label for="company">Company</label>
+      <input
+        type="text"
+        class="form-control"
+        id="company"
+        formControlName="company"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="navbar-brand" href="#">Jobs</div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngFor="let category of categories">
+          <span
+            class="nav-link"
+            (click)="filterJobs(category)"
+            [class.active]="selectedCategory === category"
+            >{{ category }}</span
+          >
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button
+        *ngIf="authService.isLoggedInUser()"
+        type="submit"
+        class="btn btn-primary me-2"
+        (click)="AddJob()"
+      >
+        Create
+      </button>
+
+      <button
+        *ngIf="authService.isLoggedInUser()"
+        class="btn btn-primary"
+        (click)="logout()"
+      >
+        logout
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-2" *ngFor="let job of filteredJobs">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">{{ job.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ job.position }}</h6>
+          <p class="card-text">Location: {{ job.location }}</p>
+          <p class="card-text">Salary: {{ job.salary }}</p>
+          <p class="card-text">Company: {{ job.company }}</p>
+          <div *ngIf="authService.isLoggedInUser()">
+            <button class="btn btn-primary me-2" (click)="updateJob(job.key)">
+              Update
+            </button>
+            <button class="btn btn-primary" (click)="deleteJob(job.key)">
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
